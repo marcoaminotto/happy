@@ -12,6 +12,7 @@
 /build
 
 # misc
+*.sqlite
 .env
 .DS_Store
 .env.local
