@@ -20,7 +20,7 @@
   max-height: 680px;
   max-width: 1100px;
 
-  background: url('../../assets/images/landing.svg') no-repeat 80% center;
+  background: url('../../../assets/images/landing.svg') no-repeat 80% center;
 }
 
 #pade-landing .content-wrapper main {
