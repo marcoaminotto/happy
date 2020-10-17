@@ -46,7 +46,7 @@ export default function CreateOrphanage() {
     data.append('opening_hours', opening_hours);
     data.append('open_on_weekends', String(open_on_weekends));
 
-    images.forEach(image => {
+    images.forEach((image) => {
       data.append('images', image);
     });
 
@@ -62,10 +62,10 @@ export default function CreateOrphanage() {
       return;
     }
 
-    let newImages = [...images]; 
+    let newImages = [...images];
     const selectedImages = Array.from(event.target.files);
     newImages = newImages.concat(selectedImages);
-    
+
     const selectedImagesPreview = newImages.map((image) => {
       return URL.createObjectURL(image);
     });
@@ -141,7 +141,10 @@ export default function CreateOrphanage() {
                   return (
                     <div key={image} className="image-container">
                       <img src={image} alt={name} />
-                      <button type="button" onClick={() => handlerRemoveImage(index)}>
+                      <button
+                        type="button"
+                        onClick={() => handlerRemoveImage(index)}
+                      >
                         <FiX size={24} color="#FF669D" />
                       </button>
                     </div>
