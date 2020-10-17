@@ -2,13 +2,17 @@ import React, { FormEvent, ChangeEvent, useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { FiPlus, FiX } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
+import api from '../services/api';
 import Sidebar from '../components/Sidebar';
 import mapIcon from '../utils/mapIcon';
 
 import '../assets/styles/pages/create-orphanage.css';
 
 export default function CreateOrphanage() {
+  const history = useHistory();
+
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
@@ -27,12 +31,30 @@ export default function CreateOrphanage() {
     });
   }
 
-  function handleSubmid(event: FormEvent) {
+  async function handleSubmid(event: FormEvent) {
     event.preventDefault();
 
     const { latitude, longitude } = position;
 
-    console.log();
+    const data = new FormData();
+
+    data.append('name', name);
+    data.append('about', about);
+    data.append('latitude', String(position.latitude));
+    data.append('longitude', String(position.longitude));
+    data.append('instructions', instructions);
+    data.append('opening_hours', opening_hours);
+    data.append('open_on_weekends', String(open_on_weekends));
+
+    images.forEach(image => {
+      data.append('images', image);
+    });
+
+    await api.post('orphanages', data);
+
+    alert('Orphanage registered!');
+
+    history.push('/app');
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
