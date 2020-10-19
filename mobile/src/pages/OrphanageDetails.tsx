@@ -6,6 +6,8 @@ import {
   Text,
   StyleSheet,
   Dimensions,
+  TouchableOpacity,
+  Linking
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
@@ -53,6 +55,10 @@ export default function OrphanageDetails() {
     return <Spinner color="#2AB5D1" />;
   }
 
+  function handleOpenGoogleMapRoutes() {
+    Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`);
+  }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imagesContainer}>
@@ -96,11 +102,11 @@ export default function OrphanageDetails() {
             />
           </MapView>
 
-          <View style={styles.routesContainer}>
+          <TouchableOpacity onPress={handleOpenGoogleMapRoutes} style={styles.routesContainer}>
             <Text style={styles.routesText}>
               Find destination on Google Maps
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.separator} />
