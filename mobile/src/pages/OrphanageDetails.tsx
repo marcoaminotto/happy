@@ -1,43 +1,69 @@
 import React from 'react';
-import { Image, View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
+import {
+  Image,
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
 import mapMarkerImg from '../images/map-marker.png';
 import { RectButton } from 'react-native-gesture-handler';
 
 export default function OrphanageDetails() {
+  const route = useRoute();
+  console.log(route.params);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imagesContainer}>
         <ScrollView horizontal pagingEnabled>
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
-          <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
+            }}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
+            }}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
+            }}
+          />
         </ScrollView>
       </View>
 
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>New Orphanage</Text>
         <Text style={styles.description}>Something about</Text>
-      
+
         <View style={styles.mapContainer}>
-          <MapView 
+          <MapView
             initialRegion={{
               latitude: 51.090114,
               longitude: 17.016391,
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
-            }} 
+            }}
             zoomEnabled={false}
             pitchEnabled={false}
             scrollEnabled={false}
             rotateEnabled={false}
             style={styles.mapStyle}
           >
-            <Marker 
+            <Marker
               icon={mapMarkerImg}
-              coordinate={{ 
+              coordinate={{
                 latitude: 51.090114,
                 longitude: 17.016391,
               }}
@@ -45,10 +71,12 @@ export default function OrphanageDetails() {
           </MapView>
 
           <View style={styles.routesContainer}>
-            <Text style={styles.routesText}>Find destination on Google Maps</Text>
+            <Text style={styles.routesText}>
+              Find destination on Google Maps
+            </Text>
           </View>
         </View>
-      
+
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instructions</Text>
@@ -57,11 +85,15 @@ export default function OrphanageDetails() {
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
             <Feather name="clock" size={40} color="#2AB5D1" />
-            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Open</Text>
+            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>
+              Open
+            </Text>
           </View>
           <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
             <Feather name="info" size={40} color="#39CC83" />
-            <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Open on weekends</Text>
+            <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>
+              Open on weekends
+            </Text>
           </View>
         </View>
 
@@ -71,7 +103,7 @@ export default function OrphanageDetails() {
         </RectButton>
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -128,7 +160,7 @@ const styles = StyleSheet.create({
 
   routesText: {
     fontFamily: 'Nunito_700Bold',
-    color: '#0089a5'
+    color: '#0089a5',
   },
 
   separator: {
@@ -141,7 +173,7 @@ const styles = StyleSheet.create({
   scheduleContainer: {
     marginTop: 24,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
   scheduleItem: {
@@ -171,11 +203,11 @@ const styles = StyleSheet.create({
   },
 
   scheduleTextBlue: {
-    color: '#5C8599'
+    color: '#5C8599',
   },
 
   scheduleTextGreen: {
-    color: '#37C77F'
+    color: '#37C77F',
   },
 
   contactButton: {
@@ -193,5 +225,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 16,
     marginLeft: 16,
-  }
-})
+  },
+});
