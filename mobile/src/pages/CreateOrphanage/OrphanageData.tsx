@@ -2,8 +2,14 @@ import React from 'react';
 import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
+import { useRoute } from '@react-navigation/native';
 
 export default function OrphanageData() {
+  const route = useRoute();
+
+  console.log(route.params);
+  
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 24 }}>
       <Text style={styles.title}>Data</Text>
