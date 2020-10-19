@@ -58,11 +58,11 @@ export default function OrphanageData() {
     data.append('open_on_weekends', String(open_on_weekends));
 
     images.forEach((image, index) => {
-      data.append('images', { 
+      data.append('images', {
         name: `image_${index}.jpg`,
         type: 'image/jpg',
         uri: image,
-       } as any);
+      } as any);
     });
 
     await api.post('orphanages', data);
