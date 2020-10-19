@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  Linking
+  Linking,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
@@ -29,7 +29,7 @@ interface Orphanage {
   latitude: number;
   longitude: number;
   about: string;
-  instruction: string;
+  instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
   images: Array<{
@@ -56,7 +56,9 @@ export default function OrphanageDetails() {
   }
 
   function handleOpenGoogleMapRoutes() {
-    Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`);
+    Linking.openURL(
+      `https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`
+    );
   }
 
   return (
@@ -102,7 +104,10 @@ export default function OrphanageDetails() {
             />
           </MapView>
 
-          <TouchableOpacity onPress={handleOpenGoogleMapRoutes} style={styles.routesContainer}>
+          <TouchableOpacity
+            onPress={handleOpenGoogleMapRoutes}
+            style={styles.routesContainer}
+          >
             <Text style={styles.routesText}>
               Find destination on Google Maps
             </Text>
@@ -112,7 +117,7 @@ export default function OrphanageDetails() {
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instructions</Text>
-        <Text style={styles.description}>{orphanage.instruction}</Text>
+        <Text style={styles.description}>{orphanage.instructions}</Text>
 
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
