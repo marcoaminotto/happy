@@ -29,7 +29,7 @@ interface Orphanage {
   latitude: number;
   longitude: number;
   about: string;
-  instruction: string;
+  instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
   images: Array<{
@@ -112,7 +112,7 @@ export default function OrphanageDetails() {
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instructions</Text>
-        <Text style={styles.description}>{orphanage.instruction}</Text>
+        <Text style={styles.description}>{orphanage.instructions}</Text>
 
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
